@@ -3,13 +3,15 @@ const inaltime = document.querySelector(".inaltime");
 const latime = document.querySelector(".latime");
 const raza = document.querySelector(".raza");
 const sezon = document.querySelector(".sezon");
-const output = document.querySelector("#output");
+const output = document.querySelector("#jar");
 const reset = document.querySelector(".reset");
+const pagination = document.querySelector(".pagination")
+
 
 produse.forEach(produs => {
   output.innerHTML += `
 
-      <div class="col-sm-3 col-lg-3 products">
+      <div class="col-sm-3 col-lg-3 products content">
 				<!-- product card -->
         <div class="product-item bg-light">
         	<div class="card">
@@ -20,7 +22,7 @@ produse.forEach(produs => {
         			</a>
         		</div>
         		<div class="card-body">
-        		    <h4 class="card-title"><a href="">${produs.titlu}</a></h4>
+        		    <h4 class="card-title"><a href="">${produs.titlu} </a></h4>
         		    <p class="card-text">${produs.pret}</p>
         		</div>
         	</div>
@@ -34,39 +36,55 @@ produse.forEach(produs => {
 function getValues(e) {
   e.preventDefault();
 
+
   const result =  produse.filter(function (el) {
       return el.inaltime == inaltime.value &&
              el.latime == latime.value &&
-             el.diametru == raza.value &&
-             el.sezon == sezon.value.toLowerCase();
+             el.raza == raza.value &&
+             el.sezon == sezon.value;
     });
+
 
     if(result != ""){
     output.innerHTML = "";
     result.forEach(res => {
       output.innerHTML += `
-      <li >
-        <div class="col-md-3">
-          <div class="product">
-             <img class="zoom" src="${res.image}" alt=""/>
-             <h3>${res.titlu}</h3>
-             <div class="price">
-            <p>${res.pret}</p>
-           </div>
-          </div>
-        </div>
-      </li>
+
+      <div class="col-sm-3 col-lg-3 products content">
+				<!-- product card -->
+        <div class="product-item bg-light">
+        	<div class="card">
+        		<div class="thumb-content">
+
+        			<a href="">
+        				<img class="card-img-top img-fluid" src="${res.img}" alt="Card image cap">
+        			</a>
+        		</div>
+        		<div class="card-body">
+        		    <h4 class="card-title"><a href="">${res.titlu}</a></h4>
+        		    <p class="card-text">${res.pret}</p>
+        		</div>
+        	</div>
+        </div><!-- end product card-->
+			</div><!-- end product column-->
 
       `
-    })
+    });
+    pagination.innerHTML = `
+      <a href="anvelope.html">Reseteaza cautarea</a>
+    `
+
     } else {
       output.innerHTML = "";
-      reset.style.display = "initial";
-      output.innerHTML = `
-      <div class="alert alert-danger" role="alert" style="margin-top:30px;">
-      <strong>Nu am gasit niciun model corespunzator! <br>
-      </div>
+      pagination.innerHTML = "";
 
+      output.innerHTML = `
+        <div>
+          <div class="alert alert-danger" role="alert" style="margin-top:30px;">
+          <strong>Nu am gasit niciun model corespunzator! <br>
+          </div>
+          <a href="anvelope.html">Reseteaza cautarea</a>
+        </div>
 
       `
     }
@@ -74,15 +92,7 @@ function getValues(e) {
 }
 
 
-submit.addEventListener("click", getValues)
 
 
-$('.pagination').pagination({
 
-  itemsToPaginate: ".products",
-  itemsPerPage: 16,
-  activeClass: 'active',
-  autoHidePrevious: true,
-    autoHideNext: true
-
-});
+submit.addEventListener("click", getValues);

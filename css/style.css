@@ -339,7 +339,7 @@ button {
 }
 
 .section {
-  padding: 100px 0;
+  padding: 50px 0;
 }
 
 .section-sm {
@@ -730,9 +730,10 @@ ul.pagination .active a {
 }
 
 .main-nav .nav-item .nav-link {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 43px;
   padding: 0 20px;
+  font-weight: 700;
 }
 
 .main-nav .nav-item .nav-link span {
@@ -927,6 +928,9 @@ ul.pagination .active a {
 
 .short-popular-category-list {
   margin-top: 40px;
+}
+.popular-deals {
+  margin-top:50px;
 }
 
 .short-popular-category-list h2 {
@@ -2549,4 +2553,23 @@ article.single-post p {
 }
 .search-section .advance-search {
   padding-top: 11px;
+}
+.paginationList {
+  display: inherit;
+}
+.paginationList li {
+
+    cursor: pointer;
+    color: #666;
+    margin-right: 10px;
+    font-weight: 600;
+    border-radius: 3px !important;
+    font-size: 16px;
+    padding: 0;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-color: transparent;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
 }

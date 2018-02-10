@@ -752,6 +752,15 @@ ul.pagination .active a {
   color: #5672f9;
 }
 
+.service-roti img {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  max-width:100%;
+}
+.service-roti h4 {
+  margin-top: 30px;
+}
+
 .main-nav .search .nav-link i {
   font-size: 15px;
   height: 43px;
